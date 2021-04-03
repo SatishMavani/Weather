@@ -1,11 +1,3 @@
-//
-//  PlaceTableViewCell.swift
-//  Weather
-//
-//  Created by Admin on 29/03/21.
-//  Copyright © 2021 Satish. All rights reserved.
-//
-
 import UIKit
 
 class PlaceTableViewCell: UITableViewCell {

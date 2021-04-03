@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  Weather
-//
-//  Created by Admin on 27/03/21.
-//  Copyright © 2021 Satish. All rights reserved.
-//
-
 import UIKit
 
 struct Place {
@@ -22,15 +14,34 @@ class HomeScreen: UIViewController {
         
         placesTableView.delegate = self
         placesTableView.dataSource = self
+    }
+
+    @IBAction func addPlaces(_ sender: UIButton) {
         
-        // Do any additional setup after loading the view, typically from a nib.
+        let locationPicker = LocationPickerViewController()
+        print("called")
+        // ignored if initial location is given, shows that location instead
+        locationPicker.showCurrentLocationInitially = true // default: true
+        
+        locationPicker.completion = { location in
+            // do some awesome stuff with location
+            if let loc = location {
+                print("called")
+//                self.cityList.addToHistory(loc)
+//                self.refresh()
+            }
+        }
+        
+        self.navigationController?.present(locationPicker, animated: true, completion: nil)
+        
+//        self.present(locationPicker, animated: true, completion: nil)
+//        navigationController?.pushViewController(locationPicker, animated: true)
+        
+        
+//        let mapView = MapScreen()
+//        self.present(mapView, animated: true, completion: nil)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
 }
 
 extension HomeScreen: UITableViewDelegate {
